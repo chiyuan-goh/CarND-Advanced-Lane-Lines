@@ -25,6 +25,9 @@ The goals / steps of this project are the following:
 [output]: ./output_images/output_img.png "Output"
 [thres]:  ./output_images/thres.png
 [video1]: ./project_video.mp4 "Video"
+[undis]: ./output_images/undistort.png
+[boxes]: ./output_images/boxes.png
+[perp]: ./output_images/perp.png
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -52,8 +55,9 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 #### 1. Provide an example of a distortion-corrected image.
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+To demonstrate this step, I will describe how I apply the distortion correction to one of frames in the project video.
+
+![alt text][undis]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
@@ -73,7 +77,9 @@ The code for my perspective transform includes a function called `get_perspectiv
 | 307, 660     | 300, 720      |
 | 1005, 660      | 980, 720        |
 
-I verified that my perspective transform was working in the 5th and 6th code block in `examples/draft.ipynb`
+I verified that my perspective transform was working in the 5th and 6th code block in `examples/draft.ipynb`. The following image show the perspective tranform in action.
+
+![alt text][perp]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
@@ -88,9 +94,8 @@ Essentially, the following steps are performed:
 5. I then move up the image and repeat step 3-5 until the top of the thresholded image.
 6. Finally, I use all the collected points from the ROIs to fit a 2nd degree polynomial.
 
-For better understanding of the ROI window, please see a visualization on the 11th code block of `examples/draft.ipynb`.   
+![alt text][boxes]
 
-![alt text][image5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
@@ -111,6 +116,12 @@ I implemented this step in the 17th code cell in `draft.ipynb` in the function `
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
 Here's a [link to my video result](https://drive.google.com/open?id=0Bxtv1dvjqwk7MzFsZy1QMmFVbTA)
+
+#### UPDATE 24 Aug
+
+I have updated my implementation based on the suggestions in the review. The change is basically to rely less on gradient and orientation and instead use color thresholding as well as x-direction thresholding only.
+
+Here is a [link](https://drive.google.com/open?id=0Bxtv1dvjqwk7VUMxbDVPYmJmUnM) to the updated video.
 
 ---
 
